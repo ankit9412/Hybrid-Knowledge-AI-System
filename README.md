@@ -1,4 +1,4 @@
-# Vietnam Travel Assistant 🇻🇳
+# Hybrid Knowledge AI System
 
 A hybrid AI-powered travel assistant that combines vector search, knowledge graphs, and conversational AI to provide personalized Vietnam travel recommendations.
 
@@ -22,8 +22,8 @@ A hybrid AI-powered travel assistant that combines vector search, knowledge grap
 
 1. **Clone and setup**
    ```bash
-   git clone https://github.com/yourusername/vietnam-travel-assistant.git
-   cd vietnam-travel-assistant
+   git clone https://github.com/ankit9412/Hybrid-Knowledge-AI-System.git
+   cd Hybrid-Knowledge-AI-System
    pip install -r requirements.txt
    ```
 
@@ -99,8 +99,7 @@ vietnam-travel-assistant/
 │   ├── css/style.css          # Styling
 │   └── js/app.js              # Frontend logic
 ├── requirements.txt           # Dependencies
-├── .env.example              # Environment template
-└── improvements.md           # Future enhancements
+└──.env.example              # Environment template
 ```
 
 ## 🎯 Usage Examples
