@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnam Travel Assistant | AI-Powered Travel Planning</title>
+    <meta name="description" content="Professional AI travel assistant for Vietnam. Get personalized recommendations powered by hybrid AI technology.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇻🇳</text></svg>">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">🇻🇳</div>
+                    <div class="logo-text">
+                        <h1>Vietnam Travel Assistant</h1>
+                        <p>AI-Powered Travel Planning</p>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="btn-secondary" onclick="clearConversation()">
+                        <i class="fas fa-refresh"></i>
+                        New Chat
+                    </button>
+                    <div class="status-indicator" id="statusIndicator">
+                        <div class="status-dot"></div>
+                        <span>Online</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <div class="chat-container">
+                <!-- Welcome Section -->
+                <div class="welcome-section" id="welcomeSection">
+                    <div class="welcome-content">
+                        <h2>Plan Your Perfect Vietnam Journey</h2>
+                        <p>Get personalized travel recommendations powered by advanced AI technology combining semantic search, knowledge graphs, and intelligent reasoning.</p>
+                        
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">🔍</div>
+                                <h3>Smart Search</h3>
+                                <p>Vector-based semantic search across 360+ destinations</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🕸️</div>
+                                <h3>Knowledge Graph</h3>
+                                <p>Connected insights from relationships between places</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">🤖</div>
+                                <h3>AI Reasoning</h3>
+                                <p>Intelligent responses tailored to your preferences</p>
+                            </div>
+                        </div>
+
+                        <div class="example-queries">
+                            <h4>Try asking:</h4>
+                            <div class="query-buttons">
+                                <button class="query-btn" onclick="sendExampleQuery('Plan a romantic 4-day trip to Vietnam')">
+                                    💕 Romantic getaway
+                                </button>
+                                <button class="query-btn" onclick="sendExampleQuery('Best food experiences in Vietnam')">
+                                    🍜 Culinary adventures
+                                </button>
+                                <button class="query-btn" onclick="sendExampleQuery('Budget backpacking itinerary for northern Vietnam')">
+                                    🎒 Budget travel
+                                </button>
+                                <button class="query-btn" onclick="sendExampleQuery('Luxury beach resorts with cultural activities')">
+                                    🏖️ Beach & culture
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chat Messages -->
+                <div class="chat-messages" id="chatMessages">
+                    <!-- Messages will be dynamically added here -->
+                </div>
+
+                <!-- Loading Indicator -->
+                <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+                    <div class="loading-content">
+                        <div class="loading-spinner"></div>
+                        <div class="loading-text">
+                            <p>Searching travel database...</p>
+                            <small>Analyzing 360+ destinations and relationships</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Chat Input -->
+    <div class="chat-input-container">
+        <div class="container">
+            <div class="chat-input-wrapper">
+                <div class="input-group">
+                    <textarea 
+                        id="messageInput" 
+                        placeholder="Ask me anything about traveling in Vietnam..."
+                        rows="1"
+                        maxlength="1000"
+                    ></textarea>
+                    <button id="sendButton" class="send-button" onclick="sendMessage()">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+                <div class="input-footer">
+                    <div class="input-info">
+                        <small>
+                            <i class="fas fa-shield-alt"></i>
+                            Your conversations are secure and private
+                        </small>
+                    </div>
+                    <div class="character-count">
+                        <span id="charCount">0</span>/1000
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>&copy; 2025 Vietnam Travel Assistant. Powered by hybrid AI technology.</p>
+                </div>
+                <!-- <div class="footer-tech"> -->
+                    <!-- <div class="tech-badge">
+                        <i class="fas fa-brain"></i>
+                        DeepSeek AI
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-database"></i>
+                        Pinecone Vector DB
+                    </div>
+                    <div class="tech-badge">
+                        <i class="fas fa-project-diagram"></i>
+                        Neo4j Graph
+                    </div>
+                </div> -->
+            <!-- </div> -->
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
